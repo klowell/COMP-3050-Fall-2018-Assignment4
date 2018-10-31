@@ -1,0 +1,18 @@
+Kristopher Lowell
+kristopher_lowell@student.uml.edu
+COMP - 3050 - 201
+Fall 2018
+10/30/2018
+
+Assignment 4 Write-Up
+
+I personally think I completed this assignment 95% of the way.  I think I fulfilled the actual 
+needs of the programming, but I'm just not sure how much comments I have to include.  I'm not 
+going through someone else's work to comment how they did something as complex as writing a 
+compiler/assembler/emulator.  I did, however, comment on what I contributedand that may or may 
+not be acceptable.  My main problem I had during this assignment was the microcode.  Adding the 
+cases to the flex and masm files was pretty straight forward. But when it came to microcode, it 
+took me way too long to figure out how the assembler figured out how to get to the correct 
+microcode.  I actually ended up turning all the "tir = tir + tir; if n then goto ...;" and 
+"alu = tir + tir; if n then goto ....;" statements into "tir = lshift(tir); if n then goto ...;" 
+to make it much more consistent and easier to read (at least for me).

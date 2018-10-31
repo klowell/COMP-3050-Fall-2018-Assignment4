@@ -1,0 +1,205 @@
+/******************************************************************************************************
+
+					BUILDING AND ASSEMBLING
+
+******************************************************************************************************/
+
+klowell@cs1:~/Documents/lowell_kristopher_00981006_hw4$ make masm_mrd
+gcc -c -g mic1symasm_mult_rshift_div.c
+flex mic1symasm_mult_rshift_div.ll
+gcc -c -g lex.yy.c
+gcc -o masm_mrd mic1symasm_mult_rshift_div.o lex.yy.o
+klowell@cs1:~/Documents/lowell_kristopher_00981006_hw4$ ./masm_mrd < div_test.asm > div_test.obj
+
+
+/******************************************************************************************************
+
+						DIV TEST
+
+******************************************************************************************************/
+
+klowell@cs1:~/Documents/lowell_kristopher_00981006_hw4$ ./mic1 prom_mrd.dat div_test.obj 0 2048
+
+Read in 146 micro instructions
+Read in 52 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000100000000000  base 10:    2048
+
+
+ProgramCounter : 0000000000000110  base 10:       6
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 0000000000000000  base 10:       0
+StackPointer   : 0000011111111100  base 10:    2044
+ARegister      : 1110101111100000  base 10:   60384
+BRegister      : 0001001101001111  base 10:    4943
+CRegister      : 0001010000100000  base 10:    5152
+DRegister      : 0000000000000000  base 10:       0
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 91
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 2048
+     the location 2048 has value 1111111111111111 , or 65535  or signed     -1
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range: b
+Type the number of reverse locations to dump: 4
+     the location 2047 has value 1110101111100000 , or 60384  or signed  -5152
+     the location 2046 has value 0001001101001111 , or  4943  or signed   4943 --------  4943
+     the location 2045 has value 0001001101001111 , or  4943  or signed   4943 -------- ----- = 0 R 4943
+     the location 2044 has value 0000000000000000 , or     0  or signed      0 -------- -5152
+Type decimal address to view memory,  q  to quit or  c  to continue: c
+
+The new PC is  : 0000000000000110
+
+
+ProgramCounter : 0000000000001100  base 10:      12
+Accumulator    : 1111111111111111  base 10:   65535 ---------------------------------- Invalid Division
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 0000000000000000  base 10:       0
+StackPointer   : 0000011111111000  base 10:    2040
+ARegister      : 0000000000000000  base 10:       0
+BRegister      : 0001001101001111  base 10:    4943
+CRegister      : 0001010000100000  base 10:    5152
+DRegister      : 0000000000000000  base 10:       0
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 171
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 2044
+     the location 2044 has value 0000000000000000 , or     0  or signed      0
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range: b
+Type the number of reverse locations to dump: 4
+     the location 2043 has value 0000000000000000 , or     0  or signed      0
+     the location 2042 has value 0000000110110101 , or   437  or signed    437 -------- 437
+     the location 2041 has value 1111111111111111 , or 65535  or signed     -1 -------- --- = 0 R -1 = Invalid Division
+     the location 2040 has value 0000000000000000 , or     0  or signed      0 --------  0
+Type decimal address to view memory,  q  to quit or  c  to continue: c
+
+The new PC is  : 0000000000001100
+
+
+ProgramCounter : 0000000000010010  base 10:      18
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 0000000000000000  base 10:       0
+StackPointer   : 0000011111110100  base 10:    2036
+ARegister      : 1111111111110000  base 10:   65520
+BRegister      : 0000000000000111  base 10:       7
+CRegister      : 0000000000010000  base 10:      16
+DRegister      : 0000001000000000  base 10:     512
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 1286
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 2040
+     the location 2040 has value 0000000000000000 , or     0  or signed      0
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range: b
+Type the number of reverse locations to dump: 4
+     the location 2039 has value 1111111111110000 , or 65520  or signed    -16
+     the location 2038 has value 1101111111111001 , or 57337  or signed  -8199 -------- -8199
+     the location 2037 has value 0000000000000111 , or     7  or signed      7 -------- ----- = 512 R 7
+     the location 2036 has value 0000001000000000 , or   512  or signed    512 --------  -16
+Type decimal address to view memory,  q  to quit or  c  to continue: c
+
+The new PC is  : 0000000000010010
+
+
+ProgramCounter : 0000000000011000  base 10:      24
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 0000000000000000  base 10:       0
+StackPointer   : 0000011111110000  base 10:    2032
+ARegister      : 1111111100000000  base 10:   65280
+BRegister      : 0000000011111111  base 10:     255
+CRegister      : 0000000100000000  base 10:     256
+DRegister      : 1111111110100001  base 10:   65441
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 1567
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 2036
+     the location 2036 has value 0000001000000000 , or   512  or signed    512
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range: b
+Type the number of reverse locations to dump: 4
+     the location 2035 has value 1111111100000000 , or 65280  or signed   -256
+     the location 2034 has value 0101111111111111 , or 24575  or signed  24575 -------- 24575
+     the location 2033 has value 0000000011111111 , or   255  or signed    255 -------- ----- = -95 R 255
+     the location 2032 has value 1111111110100001 , or 65441  or signed    -95 -------- -256
+Type decimal address to view memory,  q  to quit or  c  to continue: c
+
+The new PC is  : 0000000000011000
+
+
+ProgramCounter : 0000000000011110  base 10:      30
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 0000000000000000  base 10:       0
+StackPointer   : 0000011111101100  base 10:    2028
+ARegister      : 0000000111111111  base 10:     511
+BRegister      : 0000000000000000  base 10:       0
+CRegister      : 0000000111111111  base 10:     511
+DRegister      : 0000000000000000  base 10:       0
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 1657
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 2032
+     the location 2032 has value 1111111110100001 , or 65441  or signed    -95
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range: b
+Type the number of reverse locations to dump: 4
+     the location 2031 has value 0000000111111111 , or   511  or signed    511
+     the location 2030 has value 0000000000000000 , or     0  or signed      0 --------  0
+     the location 2029 has value 0000000000000000 , or     0  or signed      0 -------- --- = 0 R 0
+     the location 2028 has value 0000000000000000 , or     0  or signed      0 -------- 511
+Type decimal address to view memory,  q  to quit or  c  to continue: c
+
+The new PC is  : 0000000000011110
+
+
+ProgramCounter : 0000000000100100  base 10:      36
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 0000000000000000  base 10:       0
+StackPointer   : 0000011111101000  base 10:    2024
+ARegister      : 0000000000010001  base 10:      17
+BRegister      : 0000000000001110  base 10:      14
+CRegister      : 0000000000010001  base 10:      17
+DRegister      : 0000000111100001  base 10:     481
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 2709
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 2028
+     the location 2028 has value 0000000000000000 , or     0  or signed      0
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range: b
+Type the number of reverse locations to dump: 4
+     the location 2027 has value 0000000000010001 , or    17  or signed     17
+     the location 2026 has value 0001111111111111 , or  8191  or signed   8191 -------- 8191
+     the location 2025 has value 0000000000001110 , or    14  or signed     14 -------- ---- = 481 R 14
+     the location 2024 has value 0000000111100001 , or   481  or signed    481 --------  17
+Type decimal address to view memory,  q  to quit or  c  to continue: q
+MIC-1 emulator finishing, goodbye
